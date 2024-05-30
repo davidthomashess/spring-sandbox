@@ -1,13 +1,23 @@
 package com.spring.employment;
 
+import java.time.LocalDate;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.spring.employment.entity.Employee;
+import com.spring.employment.entity.Employer;
+import com.spring.employment.repository.EmployeeRepository;
+import com.spring.employment.repository.EmployerRepository;
 
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @SpringBootApplication
 public class EmploymentApplication {
+
+    private EmployeeRepository employeeRepository;
+    private EmployerRepository employerRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(EmploymentApplication.class, args);
@@ -26,7 +36,7 @@ public class EmploymentApplication {
             employeeRepository.save(employees[i]);
         }
 
-        Employor[] employers = new Employer[] {
+        Employer[] employers = new Employer[] {
                 new Employer("Whataburger", "FOOD",
                         "Specializes in providing fast food drive-in or dine-in services. Hamburgers, fries, and shakes are their specialties."),
                 new Employer("Rackspace", "TECH",
@@ -41,7 +51,7 @@ public class EmploymentApplication {
         };
 
         for (int i = 0; i < employers.length; i++) {
-            employerRepository.save(courses[i]);
+            employerRepository.save(employers[i]);
         }
     }
 }

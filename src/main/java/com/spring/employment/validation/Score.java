@@ -10,8 +10,8 @@ import jakarta.validation.Payload;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = RatingValidator.class)
-public class Rating {
+@Constraint(validatedBy = ScoreValidator.class)
+public @interface Score {
 
     String message() default "The rating is not valid";
 
