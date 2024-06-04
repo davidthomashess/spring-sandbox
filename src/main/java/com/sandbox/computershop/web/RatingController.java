@@ -26,6 +26,21 @@ public class RatingController {
 
     private RatingService ratingService;
 
+    @GetMapping("/all")
+    public ResponseEntity<List<Rating>> getRatings() {
+        return new ResponseEntity<>(ratingService.getRatings(), HttpStatus.OK);
+    }
+
+    @GetMapping("/brand/{brandId}")
+    public ResponseEntity<List<Rating>> getBrandRatings(@PathVariable Long brandId) {
+        return new ResponseEntity<>(ratingService.getBrandRatings(brandId), HttpStatus.OK);
+    }
+
+    @GetMapping("/customer/{customerId}")
+    public ResponseEntity<List<Rating>> getCusotmerRatings(@PathVariable Long customerId) {
+        return new ResponseEntity<>(ratingService.getCustomerRatings(customerId), HttpStatus.OK);
+    }
+
     @GetMapping("/customer/{customerId}/brand/{brandId}")
     public ResponseEntity<Rating> getRating(@PathVariable Long customerId, @PathVariable Long brandId) {
         return new ResponseEntity<>(ratingService.getRating(customerId, brandId), HttpStatus.OK);
@@ -48,21 +63,6 @@ public class RatingController {
         ratingService.deleteRating(customerId, brandId);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
-    @GetMapping("/customer/{customerId}")
-    public ResponseEntity<List<Rating>> getCusotmerRatings(@PathVariable Long customerId) {
-        return new ResponseEntity<>(ratingService.getCustomerRatings(customerId), HttpStatus.OK);
-    }
-
-    @GetMapping("/brand/{brandId}")
-    public ResponseEntity<List<Rating>> getBrandRatings(@PathVariable Long brandId) {
-        return new ResponseEntity<>(ratingService.getBrandRatings(brandId), HttpStatus.OK);
-    }
-
-    @GetMapping("/all")
-    public ResponseEntity<List<Rating>> getRatings() {
-        return new ResponseEntity<>(ratingService.getAllRatings(), HttpStatus.OK);
     }
 
 }

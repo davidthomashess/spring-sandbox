@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.sandbox.computershop.entity.Brand;
 import com.sandbox.computershop.entity.Customer;
 import com.sandbox.computershop.entity.Rating;
-import com.sandbox.computershop.exception.CustomerBrandApartException;
+import com.sandbox.computershop.exception.CustomerWithoutBrandException;
 import com.sandbox.computershop.exception.DeleteException;
 import com.sandbox.computershop.exception.RatingNotFoundException;
 import com.sandbox.computershop.repository.BrandRepository;
@@ -20,9 +20,24 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @Service
 public class RatingServiceImpl implements RatingService {
-    private RatingRepository ratingRepository;
-    private CustomerRepository customerRepository;
     private BrandRepository brandRepository;
+    private CustomerRepository customerRepository;
+    private RatingRepository ratingRepository;
+
+    @Override
+    public List<Rating> getRatings() {
+        return (List<Rating>) ratingRepository.findAll();
+    }
+
+    @Override
+    public List<Rating> getBrandRatings(Long brandId) {
+        return ratingRepository.findByBrandId(brandId);
+    }
+
+    @Override
+    public List<Rating> getCustomerRatings(Long customerId) {
+        return ratingRepository.findByCustomerId(customerId);
+    }
 
     @Override
     public Rating getRating(Long customerId, Long brandId) {
@@ -37,7 +52,7 @@ public class RatingServiceImpl implements RatingService {
         Brand brand = BrandServiceImpl.unwrapBrand(brandRepository.findById(brandId), brandId);
 
         if (!customer.getBrands().contains(brand))
-            throw new CustomerBrandApartException(customerId, brandId);
+            throw new CustomerWithoutBrandException(customerId, brandId);
 
         rating.setCustomer(customer);
         rating.setBrand(brand);
@@ -64,21 +79,6 @@ public class RatingServiceImpl implements RatingService {
         } else {
             throw new DeleteException();
         }
-    }
-
-    @Override
-    public List<Rating> getCustomerRatings(Long customerId) {
-        return ratingRepository.findByCustomerId(customerId);
-    }
-
-    @Override
-    public List<Rating> getBrandRatings(Long brandId) {
-        return ratingRepository.findByBrandId(brandId);
-    }
-
-    @Override
-    public List<Rating> getAllRatings() {
-        return (List<Rating>) ratingRepository.findAll();
     }
 
     static Rating unwrapRating(Optional<Rating> entity, Long customerId, Long brandId) {

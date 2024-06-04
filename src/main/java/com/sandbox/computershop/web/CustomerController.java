@@ -27,6 +27,16 @@ public class CustomerController {
 
     private CustomerService customerService;
 
+    @GetMapping("/all")
+    public ResponseEntity<List<Customer>> getCustomers() {
+        return new ResponseEntity<>(customerService.getCustomers(), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/brands")
+    public ResponseEntity<Set<Brand>> getBrandsByCustomer(@PathVariable Long id) {
+        return new ResponseEntity<>(customerService.getBrandsByCustomer(id), HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Customer> getCustomer(@PathVariable Long id) {
         return new ResponseEntity<>(customerService.getCustomer(id), HttpStatus.OK);
@@ -42,16 +52,6 @@ public class CustomerController {
         customerService.deleteCustomer(id);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
-    @GetMapping("/all")
-    public ResponseEntity<List<Customer>> getCustomers() {
-        return new ResponseEntity<>(customerService.getCustomers(), HttpStatus.OK);
-    }
-
-    @GetMapping("/{id}/brands")
-    public ResponseEntity<Set<Brand>> getBrandsByCustomer(@PathVariable Long id) {
-        return new ResponseEntity<>(customerService.getBrandsByCustomer(id), HttpStatus.OK);
     }
 
 }

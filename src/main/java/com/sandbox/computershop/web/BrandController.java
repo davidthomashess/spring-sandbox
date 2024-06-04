@@ -28,6 +28,16 @@ public class BrandController {
 
     BrandService brandService;
 
+    @GetMapping("/all")
+    public ResponseEntity<List<Brand>> getBrands() {
+        return new ResponseEntity<>(brandService.getBrands(), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/customers")
+    public ResponseEntity<Set<Customer>> getCustomersByBrand(Long id) {
+        return new ResponseEntity<>(brandService.getCustomersByBrand(id), HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Brand> getBrand(@PathVariable Long id) {
         return new ResponseEntity<>(brandService.getBrand(id), HttpStatus.OK);
@@ -45,19 +55,9 @@ public class BrandController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<Brand>> getBrands() {
-        return new ResponseEntity<>(brandService.getBrands(), HttpStatus.OK);
-    }
-
     @PutMapping("/{brandId}/customer/{customerId}")
     public ResponseEntity<Brand> addCustomerToBrand(@PathVariable Long brandId, @PathVariable Long customerId) {
         return new ResponseEntity<>(brandService.addCustomerToBrand(customerId, brandId), HttpStatus.OK);
-    }
-
-    @GetMapping("/{id}/customers")
-    public ResponseEntity<Set<Customer>> getCustomersByBrand(Long id) {
-        return new ResponseEntity<>(brandService.getCustomersByBrand(id), HttpStatus.OK);
     }
 
 }

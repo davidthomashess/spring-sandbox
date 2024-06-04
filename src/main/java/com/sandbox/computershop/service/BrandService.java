@@ -8,6 +8,10 @@ import com.sandbox.computershop.entity.Customer;
 
 public interface BrandService {
 
+    List<Brand> getBrands();
+
+    Set<Customer> getCustomersByBrand(Long id);
+
     Brand getBrand(Long id);
 
     Brand saveBrand(Brand brand);
@@ -15,9 +19,5 @@ public interface BrandService {
     void deleteBrand(Long id);
 
     Brand addCustomerToBrand(Long customerId, Long brandId);
-
-    List<Brand> getBrands();
-
-    Set<Customer> getCustomersByBrand(Long id);
 
 }

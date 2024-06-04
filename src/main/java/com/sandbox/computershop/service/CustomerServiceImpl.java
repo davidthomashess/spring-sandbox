@@ -21,6 +21,18 @@ public class CustomerServiceImpl implements CustomerService {
     private CustomerRepository customerRepository;
 
     @Override
+    public List<Customer> getCustomers() {
+        return (List<Customer>) customerRepository.findAll();
+    }
+
+    @Override
+    public Set<Brand> getBrandsByCustomer(Long id) {
+        Customer customer = getCustomer(id);
+
+        return customer.getBrands();
+    }
+
+    @Override
     public Customer getCustomer(Long id) {
         Optional<Customer> customer = customerRepository.findById(id);
 
@@ -41,18 +53,6 @@ public class CustomerServiceImpl implements CustomerService {
         } else {
             throw new DeleteException();
         }
-    }
-
-    @Override
-    public List<Customer> getCustomers() {
-        return (List<Customer>) customerRepository.findAll();
-    }
-
-    @Override
-    public Set<Brand> getBrandsByCustomer(Long id) {
-        Customer customer = getCustomer(id);
-
-        return customer.getBrands();
     }
 
     static Customer unwrapCustomer(Optional<Customer> entity, Long id) {

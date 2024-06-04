@@ -17,7 +17,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.sandbox.computershop.exception.BrandNotFoundException;
-import com.sandbox.computershop.exception.CustomerBrandApartException;
+import com.sandbox.computershop.exception.CustomerWithoutBrandException;
 import com.sandbox.computershop.exception.CustomerNotFoundException;
 import com.sandbox.computershop.exception.DeleteException;
 import com.sandbox.computershop.exception.ErrorResponse;
@@ -27,7 +27,7 @@ import com.sandbox.computershop.exception.RatingNotFoundException;
 public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({ BrandNotFoundException.class, RatingNotFoundException.class, CustomerNotFoundException.class,
-            CustomerBrandApartException.class })
+            CustomerWithoutBrandException.class })
     public ResponseEntity<Object> handleResourceNotFoundException(RuntimeException ex) {
         ErrorResponse error = new ErrorResponse(Arrays.asList(ex.getMessage()));
 

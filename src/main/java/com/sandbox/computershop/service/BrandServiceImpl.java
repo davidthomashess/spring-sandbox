@@ -24,6 +24,18 @@ public class BrandServiceImpl implements BrandService {
     private CustomerRepository customerRepository;
 
     @Override
+    public List<Brand> getBrands() {
+        return (List<Brand>) brandRepository.findAll();
+    }
+
+    @Override
+    public Set<Customer> getCustomersByBrand(Long id) {
+        Brand brand = getBrand(id);
+
+        return brand.getCustomers();
+    }
+
+    @Override
     public Brand getBrand(Long id) {
         Optional<Brand> brand = brandRepository.findById(id);
 
@@ -47,11 +59,6 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public List<Brand> getBrands() {
-        return (List<Brand>) brandRepository.findAll();
-    }
-
-    @Override
     public Brand addCustomerToBrand(Long customerId, Long brandId) {
         Brand brand = getBrand(brandId);
         Set<Customer> boughtByCustomers = getCustomersByBrand(brandId);
@@ -67,13 +74,6 @@ public class BrandServiceImpl implements BrandService {
         brand.getCustomers().add(unwrappedCustomer);
 
         return brandRepository.save(brand);
-    }
-
-    @Override
-    public Set<Customer> getCustomersByBrand(Long id) {
-        Brand brand = getBrand(id);
-
-        return brand.getCustomers();
     }
 
     static Brand unwrapBrand(Optional<Brand> entity, Long id) {

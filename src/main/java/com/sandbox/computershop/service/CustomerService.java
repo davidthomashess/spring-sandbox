@@ -8,14 +8,14 @@ import com.sandbox.computershop.entity.Customer;
 
 public interface CustomerService {
 
+    List<Customer> getCustomers();
+
+    Set<Brand> getBrandsByCustomer(Long id);
+
     Customer getCustomer(Long id);
 
     Customer saveCustomer(Customer customer);
 
     void deleteCustomer(Long id);
-
-    List<Customer> getCustomers();
-
-    Set<Brand> getBrandsByCustomer(Long id);
 
 }
