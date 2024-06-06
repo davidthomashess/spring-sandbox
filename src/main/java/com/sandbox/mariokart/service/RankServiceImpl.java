@@ -1,5 +1,22 @@
 package com.sandbox.mariokart.service;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.sandbox.mariokart.entity.Player;
+import com.sandbox.mariokart.entity.Rank;
+import com.sandbox.mariokart.entity.Track;
+import com.sandbox.mariokart.exception.DeleteException;
+import com.sandbox.mariokart.exception.PlayerWithoutTrackException;
+import com.sandbox.mariokart.exception.RankNotFoundException;
+import com.sandbox.mariokart.repository.PlayerRepository;
+import com.sandbox.mariokart.repository.RankRepository;
+import com.sandbox.mariokart.repository.TrackRepository;
+
+import lombok.AllArgsConstructor;
+
 @AllArgsConstructor
 @Service
 public class RankServiceImpl implements RankService {
@@ -19,7 +36,7 @@ public class RankServiceImpl implements RankService {
     }
 
     @Override
-    public List<Rank> getPlayerRatings(Long playerId) {
+    public List<Rank> getPlayerRanks(Long playerId) {
         return rankRepository.findByPlayerId(playerId);
     }
 
@@ -32,8 +49,8 @@ public class RankServiceImpl implements RankService {
 
     @Override
     public Rank saveRank(Rank rank, Long playerId, Long trackId) {
-        Player player = PlayerServiceImpl.unwarpPlayer(playerRepository.findById(playerId), playerId);
-        Track track = TrackServiceImpl.unwarpTrack(trackRepository.findById(trackId), trackId);
+        Player player = PlayerServiceImpl.unwrapPlayer(playerRepository.findById(playerId), playerId);
+        Track track = TrackServiceImpl.unwrapTrack(trackRepository.findById(trackId), trackId);
 
         if (!player.getTracks().contains(track))
             throw new PlayerWithoutTrackException(playerId, trackId);
@@ -45,14 +62,31 @@ public class RankServiceImpl implements RankService {
     }
 
     @Override
-    public void deleteRank(Long playerId, Long trackId) {
+    public Rank updateRank(String placement, Long playerId, Long trackId) {
         Optional<Rank> rank = rankRepository.findByPlayerIdAndTrackId(playerId, trackId);
+        Rank unwrappedRank = unwrapRank(rank, playerId, trackId);
+
+        unwrappedRank.setPlacement(placement);
+
+        return rankRepository.save(unwrappedRank);
     }
 
-    static Rank unwarpRank(Optional<Rank> entity, Long playerId, Long trackId) {
+    @Override
+    public void deleteRank(Long playerId, Long trackId) {
+        Optional<Rank> rank = rankRepository.findByPlayerIdAndTrackId(playerId, trackId);
+
+        if (rank.isPresent()) {
+            rankRepository.deleteByPlayerIdAndTrackId(playerId, trackId);
+        } else {
+            throw new DeleteException();
+        }
+    }
+
+    static Rank unwrapRank(Optional<Rank> entity, Long playerId, Long trackId) {
         if (entity.isPresent())
             return entity.get();
         else
             throw new RankNotFoundException(playerId, trackId);
     }
+
 }

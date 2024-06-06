@@ -1,8 +1,22 @@
 package com.sandbox.mariokart.service;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
+import org.springframework.stereotype.Service;
+
+import com.sandbox.mariokart.entity.Player;
+import com.sandbox.mariokart.entity.Track;
+import com.sandbox.mariokart.exception.DeleteException;
+import com.sandbox.mariokart.exception.PlayerNotFoundException;
+import com.sandbox.mariokart.repository.PlayerRepository;
+
+import lombok.AllArgsConstructor;
+
 @AllArgsConstructor
 @Service
-public class CustomerServiceImpl implements CustomerService {
+public class PlayerServiceImpl implements PlayerService {
 
     private PlayerRepository playerRepository;
 
@@ -46,4 +60,5 @@ public class CustomerServiceImpl implements CustomerService {
         else
             throw new PlayerNotFoundException(id);
     }
+
 }

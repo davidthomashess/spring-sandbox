@@ -60,18 +60,18 @@ public class TrackServiceImpl implements TrackService {
 
     @Override
     public Track addPlayerToTrack(Long playerId, Long trackId) {
-        Track track = getTrack(trackId)
+        Track track = getTrack(trackId);
         Set<Player> players = getPlayersByTrack(trackId);
         Optional<Player> player = playerRepository.findById(playerId);
-        Player unwrappedPlayer = PlayerServiceImpl.unwarpPlayer(player, playerId);
-        
+        Player unwrappedPlayer = PlayerServiceImpl.unwrapPlayer(player, playerId);
+
         for (Player element : players) {
             if (element.getId().equals(playerId))
                 throw new PlayerDataIntegrityException(playerId, trackId);
         }
-        
+
         track.getPlayers().add(unwrappedPlayer);
-        
+
         return trackRepository.save(track);
     }
 

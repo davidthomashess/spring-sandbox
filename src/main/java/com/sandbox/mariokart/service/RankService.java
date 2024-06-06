@@ -10,7 +10,7 @@ public interface RankService {
 
     List<Rank> getPlayerRanks(Long playerId);
 
-    List<Rank> getTrakRanks(Long trackId);
+    List<Rank> getTrackRanks(Long trackId);
 
     Rank getRank(Long playerId, Long trackId);
 
