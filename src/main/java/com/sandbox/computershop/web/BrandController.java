@@ -34,7 +34,7 @@ public class BrandController {
     }
 
     @GetMapping("/{id}/customers")
-    public ResponseEntity<Set<Customer>> getCustomersByBrand(Long id) {
+    public ResponseEntity<Set<Customer>> getCustomersByBrand(@PathVariable Long id) {
         return new ResponseEntity<>(brandService.getCustomersByBrand(id), HttpStatus.OK);
     }
 

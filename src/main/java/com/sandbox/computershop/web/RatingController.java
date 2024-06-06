@@ -37,7 +37,7 @@ public class RatingController {
     }
 
     @GetMapping("/customer/{customerId}")
-    public ResponseEntity<List<Rating>> getCusotmerRatings(@PathVariable Long customerId) {
+    public ResponseEntity<List<Rating>> getCustomerRatings(@PathVariable Long customerId) {
         return new ResponseEntity<>(ratingService.getCustomerRatings(customerId), HttpStatus.OK);
     }
 
