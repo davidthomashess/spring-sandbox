@@ -44,7 +44,7 @@ public class Track {
 
     @NotBlank(message = "Info cannot be blank")
     @NonNull
-    @Column(name = "info", nullable = false)
+    @Column(name = "info", nullable = false, length = 1200)
     private String info;
 
     @JsonIgnore

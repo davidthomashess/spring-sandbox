@@ -43,8 +43,8 @@ public class Player {
     private String allegiance;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    private List<Rank> ratings;
+    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL)
+    private List<Rank> ranks;
 
     @JsonIgnore
     @ManyToMany

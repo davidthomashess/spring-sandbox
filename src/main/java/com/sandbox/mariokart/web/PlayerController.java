@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sandbox.mariokart.entity.Player;
 import com.sandbox.mariokart.entity.Track;
 import com.sandbox.mariokart.service.PlayerService;
 
@@ -22,7 +23,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/player")
-public class Player {
+public class PlayerController {
 
     private PlayerService playerService;
 

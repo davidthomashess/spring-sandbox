@@ -19,7 +19,7 @@ import lombok.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "rank", uniqueConstraints = {
-        @UniqueConstraint(columnNames = { "customer_id", "brand_id" })
+        @UniqueConstraint(columnNames = { "player_id", "track_id" })
 })
 public class Rank {
 
