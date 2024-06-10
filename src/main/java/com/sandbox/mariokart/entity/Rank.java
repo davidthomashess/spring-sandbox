@@ -25,7 +25,7 @@ public class Rank {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "rank_id")
     private Long id;
 
     @Placement
@@ -33,11 +33,11 @@ public class Rank {
     private String placement;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "player_id", referencedColumnName = "id")
+    @JoinColumn(name = "player_id")
     private Player player;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "track_id", referencedColumnName = "id")
+    @JoinColumn(name = "track_id")
     private Track track;
 
 }

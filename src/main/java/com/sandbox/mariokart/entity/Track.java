@@ -29,7 +29,7 @@ public class Track {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "track_id")
     private Long id;
 
     @NotBlank(message = "Track name cannot be blank")
@@ -53,7 +53,7 @@ public class Track {
 
     @JsonIgnore
     @ManyToMany
-    @JoinTable(name = "track_player", joinColumns = @JoinColumn(name = "track_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"))
+    @JoinTable(name = "track_player", joinColumns = @JoinColumn(name = "track_id"), inverseJoinColumns = @JoinColumn(name = "player_id"))
     private Set<Player> players;
 
 }
