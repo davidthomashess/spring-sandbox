@@ -1,4 +1,4 @@
-package com.sandbox.mariokart.validation;
+package com.sandbox.company.validation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,8 +10,8 @@ import jakarta.validation.Payload;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = PlacementValidator.class)
-public @interface Placement {
+@Constraint(validatedBy = PhoneTypeValidator.class)
+public @interface PhoneType {
 
     String message() default "Not a valid placement value";
 

@@ -1,14 +1,13 @@
-package com.sandbox.mariokart;
+package com.sandbox.company;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ComputerShopApplicationTests {
+class CompanyApplicationTests {
 
     @Test
     void contextLoads() {
 
     }
-
 }
