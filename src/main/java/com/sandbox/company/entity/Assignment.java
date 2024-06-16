@@ -7,7 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
@@ -31,7 +31,7 @@ public class Assignment {
     private Employee employee;
 
     @Id
-    @OneToMany
+    @OneToOne
     @PrimaryKeyJoinColumn(name = "project_id")
     private Project project;
 

@@ -20,7 +20,7 @@ public class HourlyEmployee {
     @Id
     @OneToOne(optional = false)
     @PrimaryKeyJoinColumn(name = "employee_id")
-    private Employee id;
+    private Long id;
 
     @NotBlank(message = "Hourly rate cannot be blank")
     @Column(name = "hourly_rate", nullable = false, precision = 7, scale = 2)

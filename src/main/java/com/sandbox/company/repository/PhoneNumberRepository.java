@@ -1,19 +1,21 @@
 package com.sandbox.company.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
 import com.sandbox.company.entity.PhoneNumber;
-import com.sandbox.company.entity.PhoneNumberPK;
 
 import jakarta.transaction.Transactional;
 
-public interface PhoneNumberRepository extends CrudRepository<PhoneNumber, PhoneNumberPK> {
+public interface PhoneNumberRepository extends CrudRepository<PhoneNumber, Long> {
 
-    Optional<PhoneNumber> findByEmployeeIdAndPhone(Long employeeId, String phone);
+    Optional<PhoneNumber> findByPhoneNumberId(Long id);
 
     @Transactional
-    void deleteByEmployeeIdAndPhone(Long employeeId, String phone);
+    void deleteByPhoneNumberId(Long phoneId);
+
+    List<PhoneNumber> findByEmployeeId(Long employeeId);
 
 }
