@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.IdClass;
+// import jakarta.persistence.IdClass;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
@@ -19,7 +19,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@IdClass(AssignmentPK.class)
+// @IdClass(AssignmentPK.class)
 @Table(name = "assignment", uniqueConstraints = {
         @UniqueConstraint(columnNames = { "employee_id", "project_id" })
 })

@@ -60,7 +60,7 @@ public class PhoneNumberServiceImpl implements PhoneNumberService {
     }
 
     @Override
-    public PhoneNumber updatePhoneNumberType(String phoneType, Long phoneId, String phone) {
+    public PhoneNumber updatePhoneNumberPhoneType(String phoneType, Long phoneId, String phone) {
         Optional<PhoneNumber> phoneNumber = phoneNumberRepository.findById(phoneId);
         PhoneNumber unwrappedPhoneNumber = unwrapPhoneNumber(phoneNumber, phone);
 

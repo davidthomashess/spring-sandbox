@@ -16,7 +16,7 @@ public interface PhoneNumberService {
 
     PhoneNumber updatePhoneNumberPhone(String phone, Long phoneId);
 
-    PhoneNumber updatePhoneNumberType(String phoneType, Long phoneId, String phone);
+    PhoneNumber updatePhoneNumberPhoneType(String phoneType, Long phoneId, String phone);
 
     PhoneNumber updatePhoneNumberPrimary(boolean primary, Long phoneId, String phone);
 
