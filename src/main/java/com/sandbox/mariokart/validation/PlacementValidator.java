@@ -8,7 +8,7 @@ import jakarta.validation.ConstraintValidatorContext;
 
 public class PlacementValidator implements ConstraintValidator<Placement, String> {
 
-    List<String> placement = Arrays.asList(
+    List<String> placements = Arrays.asList(
             "1ST",
             "2ND",
             "3RD",
@@ -22,8 +22,8 @@ public class PlacementValidator implements ConstraintValidator<Placement, String
     public boolean isValid(String value, ConstraintValidatorContext context) {
         if (value == null)
             return false;
-        for (String string : placement) {
-            if (value == string)
+        for (String string : placements) {
+            if (value.equals(string))
                 return true;
         }
 
