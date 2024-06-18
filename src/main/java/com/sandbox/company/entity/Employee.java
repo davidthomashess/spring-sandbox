@@ -1,6 +1,7 @@
 package com.sandbox.company.entity;
 
 import java.util.List;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -74,6 +75,6 @@ public class Employee {
 
     @JsonIgnore
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    private List<Assignment> assignments;
+    private Set<Assignment> assignments;
 
 }

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.sandbox.company.entity.Employee;
 import com.sandbox.company.entity.SalaryEmployee;
 import com.sandbox.company.exception.DeleteException;
 import com.sandbox.company.exception.EmployeeNotFoundException;
@@ -33,10 +34,11 @@ public class SalaryEmployeeServiceImpl implements SalaryEmployeeService {
 
     @Override
     public SalaryEmployee saveSalaryEmployee(SalaryEmployee salaryEmployee, Long id) {
+        Employee employee = EmployeeServiceImpl.unwrapEmployee(employeeRepository.findById(id), id);
         if (!employeeRepository.findById(id).isPresent())
             throw new EmployeeNotFoundException(id);
 
-        salaryEmployee.setId(id);
+        salaryEmployee.setEmployee(employee);
 
         return salaryEmployeeRepository.save(salaryEmployee);
     }

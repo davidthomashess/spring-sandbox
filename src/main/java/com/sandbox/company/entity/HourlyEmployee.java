@@ -3,8 +3,8 @@ package com.sandbox.company.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -19,8 +19,8 @@ public class HourlyEmployee {
 
     @Id
     @OneToOne(optional = false)
-    @PrimaryKeyJoinColumn(name = "employee_id")
-    private Long id;
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 
     @NotBlank(message = "Hourly rate cannot be blank")
     @Column(name = "hourly_rate", nullable = false, precision = 7, scale = 2)
