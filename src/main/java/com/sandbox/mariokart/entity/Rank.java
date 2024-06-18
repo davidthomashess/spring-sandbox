@@ -8,6 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.*;
 
 @Getter
@@ -15,6 +17,9 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "rank", uniqueConstraints = {
+        @UniqueConstraint(columnNames = { "player_id", "track_id" })
+})
 @Data
 @IdClass(RankPK.class)
 public class Rank {
