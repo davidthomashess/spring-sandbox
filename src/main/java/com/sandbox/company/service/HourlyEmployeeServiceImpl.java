@@ -1,5 +1,6 @@
 package com.sandbox.company.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +30,7 @@ public class HourlyEmployeeServiceImpl implements HourlyEmployeeService {
 
     @Override
     public HourlyEmployee getHourlyEmployee(Long id) {
-        return hourlyEmployeeRepository.findById(id).get();
+        return hourlyEmployeeRepository.findByEmployeeId(id).get();
     }
 
     @Override
@@ -44,8 +45,8 @@ public class HourlyEmployeeServiceImpl implements HourlyEmployeeService {
     }
 
     @Override
-    public HourlyEmployee updateHourlyEmployeeHourlyRate(double hourlyRate, Long id) {
-        Optional<HourlyEmployee> hourlyEmployee = hourlyEmployeeRepository.findById(id);
+    public HourlyEmployee updateHourlyEmployeeHourlyRate(BigDecimal hourlyRate, Long id) {
+        Optional<HourlyEmployee> hourlyEmployee = hourlyEmployeeRepository.findByEmployeeId(id);
         HourlyEmployee unwrappedHourlyEmployee = unwrapHourlyEmployee(hourlyEmployee, id);
 
         unwrappedHourlyEmployee.setHourlyRate(hourlyRate);
@@ -55,7 +56,7 @@ public class HourlyEmployeeServiceImpl implements HourlyEmployeeService {
 
     @Override
     public HourlyEmployee updateHourlyEmployeeFullTime(boolean fullTime, Long id) {
-        Optional<HourlyEmployee> hourlyEmployee = hourlyEmployeeRepository.findById(id);
+        Optional<HourlyEmployee> hourlyEmployee = hourlyEmployeeRepository.findByEmployeeId(id);
         HourlyEmployee unwrappedHourlyEmployee = unwrapHourlyEmployee(hourlyEmployee, id);
 
         unwrappedHourlyEmployee.setFullTime(fullTime);
@@ -65,10 +66,10 @@ public class HourlyEmployeeServiceImpl implements HourlyEmployeeService {
 
     @Override
     public void deleteHourlyEmployee(Long id) {
-        Optional<HourlyEmployee> hourlyEmployee = hourlyEmployeeRepository.findById(id);
+        Optional<HourlyEmployee> hourlyEmployee = hourlyEmployeeRepository.findByEmployeeId(id);
 
         if (hourlyEmployee.isPresent())
-            hourlyEmployeeRepository.deleteById(id);
+            hourlyEmployeeRepository.deleteByEmployeeId(id);
         else
             throw new DeleteException();
     }

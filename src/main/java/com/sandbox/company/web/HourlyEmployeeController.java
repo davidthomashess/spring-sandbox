@@ -42,7 +42,7 @@ public class HourlyEmployeeController {
         return new ResponseEntity<>(hourlyEmployeeService.saveHourlyEmployee(hourlyEmployee, id), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/hourly-rate")
     public ResponseEntity<HourlyEmployee> updateHourlyEmployeeHourlyRate(
             @Valid @RequestBody HourlyEmployee hourlyEmployee, @PathVariable Long id) {
         return new ResponseEntity<>(
@@ -50,7 +50,7 @@ public class HourlyEmployeeController {
                 HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/full-time")
     public ResponseEntity<HourlyEmployee> updateHourlyEmployeeFullTime(
             @Valid @RequestBody HourlyEmployee hourlyEmployee, @PathVariable Long id) {
         return new ResponseEntity<>(

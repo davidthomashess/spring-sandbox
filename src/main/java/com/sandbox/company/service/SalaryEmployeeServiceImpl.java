@@ -1,5 +1,6 @@
 package com.sandbox.company.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,8 +45,8 @@ public class SalaryEmployeeServiceImpl implements SalaryEmployeeService {
     }
 
     @Override
-    public SalaryEmployee updateSalaryEmployeeSalaryRate(double salaryRate, Long id) {
-        Optional<SalaryEmployee> salaryEmployee = salaryEmployeeRepository.findById(id);
+    public SalaryEmployee updateSalaryEmployeeSalaryRate(BigDecimal salaryRate, Long id) {
+        Optional<SalaryEmployee> salaryEmployee = salaryEmployeeRepository.findByEmployeeId(id);
         SalaryEmployee unwrappedSalaryEmployee = unwrapSalaryEmployee(salaryEmployee, id);
 
         unwrappedSalaryEmployee.setSalaryRate(salaryRate);
@@ -55,7 +56,7 @@ public class SalaryEmployeeServiceImpl implements SalaryEmployeeService {
 
     @Override
     public SalaryEmployee updateSalaryEmployeeFullTime(boolean fullTime, Long id) {
-        Optional<SalaryEmployee> salaryEmployee = salaryEmployeeRepository.findById(id);
+        Optional<SalaryEmployee> salaryEmployee = salaryEmployeeRepository.findByEmployeeId(id);
         SalaryEmployee unwrappedSalaryEmployee = unwrapSalaryEmployee(salaryEmployee, id);
 
         unwrappedSalaryEmployee.setFullTime(fullTime);
@@ -65,10 +66,10 @@ public class SalaryEmployeeServiceImpl implements SalaryEmployeeService {
 
     @Override
     public void deleteSalaryEmployee(Long id) {
-        Optional<SalaryEmployee> salaryEmployee = salaryEmployeeRepository.findById(id);
+        Optional<SalaryEmployee> salaryEmployee = salaryEmployeeRepository.findByEmployeeId(id);
 
         if (salaryEmployee.isPresent())
-            salaryEmployeeRepository.deleteById(id);
+            salaryEmployeeRepository.deleteByEmployeeId(id);
         else
             throw new DeleteException();
     }

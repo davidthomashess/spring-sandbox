@@ -70,11 +70,11 @@ public class PhoneNumberServiceImpl implements PhoneNumberService {
     }
 
     @Override
-    public PhoneNumber updatePhoneNumberPrimary(boolean primary, Long phoneId, String phone) {
+    public PhoneNumber updatePhoneNumberPhonePrimary(boolean phonePrimary, Long phoneId, String phone) {
         Optional<PhoneNumber> phoneNumber = phoneNumberRepository.findById(phoneId);
         PhoneNumber unwrappedPhoneNumber = unwrapPhoneNumber(phoneNumber, phone);
 
-        unwrappedPhoneNumber.setPrimary(primary);
+        unwrappedPhoneNumber.setPhonePrimary(phonePrimary);
 
         return phoneNumberRepository.save(unwrappedPhoneNumber);
     }

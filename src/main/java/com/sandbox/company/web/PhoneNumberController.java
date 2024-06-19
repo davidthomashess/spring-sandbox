@@ -47,7 +47,7 @@ public class PhoneNumberController {
         return new ResponseEntity<>(phoneNumberService.savePhoneNumber(phoneNumber, employeeId), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{phoneId}")
+    @PutMapping("/{phoneId}/phone")
     public ResponseEntity<PhoneNumber> updatePhoneNumberPhone(@Valid @RequestBody PhoneNumber phoneNumber,
             @PathVariable Long phoneId) {
         return new ResponseEntity<>(
@@ -55,7 +55,7 @@ public class PhoneNumberController {
                 HttpStatus.OK);
     }
 
-    @PutMapping("/{phoneId}")
+    @PutMapping("/{phoneId}/phone-type")
     public ResponseEntity<PhoneNumber> updatePhoneNumberPhoneType(@Valid @RequestBody PhoneNumber phoneNumber,
             @PathVariable Long phoneId) {
         return new ResponseEntity<>(
@@ -64,11 +64,12 @@ public class PhoneNumberController {
                 HttpStatus.OK);
     }
 
-    @PutMapping("/{phoneId}")
-    public ResponseEntity<PhoneNumber> updatePhoneNumberPrimary(@Valid @RequestBody PhoneNumber phoneNumber,
+    @PutMapping("/{phoneId}/phone-primary")
+    public ResponseEntity<PhoneNumber> updatePhoneNumberPhonePrimary(@Valid @RequestBody PhoneNumber phoneNumber,
             @PathVariable Long phoneId) {
         return new ResponseEntity<>(
-                phoneNumberService.updatePhoneNumberPrimary(phoneNumber.isPrimary(), phoneId, phoneNumber.getPhone()),
+                phoneNumberService.updatePhoneNumberPhonePrimary(phoneNumber.isPhonePrimary(), phoneId,
+                        phoneNumber.getPhone()),
                 HttpStatus.OK);
     }
 

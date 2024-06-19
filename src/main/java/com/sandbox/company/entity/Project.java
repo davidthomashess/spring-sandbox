@@ -14,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -42,12 +43,12 @@ public class Project {
     @Size(max = 300)
     private String description;
 
-    @NotBlank(message = "You must provide a start date")
+    @NotNull(message = "You must provide a start date")
     @NonNull
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
 
-    @NotBlank(message = "You must provide an end date")
+    @NotNull(message = "You must provide an end date")
     @NonNull
     @Column(name = "end_date", nullable = false)
     private LocalDate endDate;

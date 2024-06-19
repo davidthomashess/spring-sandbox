@@ -1,5 +1,6 @@
 package com.sandbox.company.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.sandbox.company.entity.HourlyEmployee;
@@ -12,7 +13,7 @@ public interface HourlyEmployeeService {
 
     HourlyEmployee saveHourlyEmployee(HourlyEmployee hourlyEmployee, Long id);
 
-    HourlyEmployee updateHourlyEmployeeHourlyRate(double hourlyRate, Long id);
+    HourlyEmployee updateHourlyEmployeeHourlyRate(BigDecimal hourlyRate, Long id);
 
     HourlyEmployee updateHourlyEmployeeFullTime(boolean fullTime, Long id);
 

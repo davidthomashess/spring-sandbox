@@ -41,42 +41,42 @@ public class EmployeeController {
         return new ResponseEntity<>(employeeService.saveEmployee(employee), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/first-name")
     public ResponseEntity<Employee> updateEmployeeFirstName(@Valid @RequestBody Employee employee,
             @PathVariable Long id) {
         return new ResponseEntity<>(employeeService.updateEmployeeFirstName(employee.getFirstName(), id),
                 HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/last-name")
     public ResponseEntity<Employee> updateEmployeeLastName(@Valid @RequestBody Employee employee,
             @PathVariable Long id) {
         return new ResponseEntity<>(employeeService.updateEmployeeLastName(employee.getLastName(), id),
                 HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/address")
     public ResponseEntity<Employee> updateEmployeeAddress(@Valid @RequestBody Employee employee,
             @PathVariable Long id) {
         return new ResponseEntity<>(employeeService.updateEmployeeAddress(employee.getAddress(), id),
                 HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/city")
     public ResponseEntity<Employee> updateEmployeeCity(@Valid @RequestBody Employee employee,
             @PathVariable Long id) {
         return new ResponseEntity<>(employeeService.updateEmployeeCity(employee.getCity(), id),
                 HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/state")
     public ResponseEntity<Employee> updateEmployeeState(@Valid @RequestBody Employee employee,
             @PathVariable Long id) {
         return new ResponseEntity<>(employeeService.updateEmployeeState(employee.getState(), id),
                 HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/email")
     public ResponseEntity<Employee> updateEmployeeEmail(@Valid @RequestBody Employee employee,
             @PathVariable Long id) {
         return new ResponseEntity<>(employeeService.updateEmployeeEmail(employee.getEmail(), id),

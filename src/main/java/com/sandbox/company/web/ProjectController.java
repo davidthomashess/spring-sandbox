@@ -40,17 +40,17 @@ public class ProjectController {
         return new ResponseEntity<>(projectService.saveProject(project), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/name")
     public ResponseEntity<Project> updateProjectName(@Valid @RequestBody Project project, @PathVariable Long id) {
         return new ResponseEntity<>(projectService.updateProjectName(project.getName(), id), HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/start-date")
     public ResponseEntity<Project> updateProjectStartDate(@Valid @RequestBody Project project, @PathVariable Long id) {
         return new ResponseEntity<>(projectService.updateProjectStartDate(project.getStartDate(), id), HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/end-date")
     public ResponseEntity<Project> updateProjectEndDate(@Valid @RequestBody Project project, @PathVariable Long id) {
         return new ResponseEntity<>(projectService.updateProjectEndDate(project.getEndDate(), id), HttpStatus.OK);
     }

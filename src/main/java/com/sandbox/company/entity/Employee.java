@@ -21,6 +21,7 @@ import lombok.*;
 @Getter
 @Setter
 @RequiredArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "Employee")
 public class Employee {
@@ -62,11 +63,11 @@ public class Employee {
     private String Email;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private HourlyEmployee hourlyEmployee;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private SalaryEmployee salaryEmployee;
 
     @JsonIgnore

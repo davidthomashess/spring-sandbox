@@ -19,6 +19,7 @@ import lombok.*;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "phone_number")
 public class PhoneNumber implements Serializable {
@@ -39,11 +40,11 @@ public class PhoneNumber implements Serializable {
     @PhoneType
     @NotBlank(message = "Phone type cannot be blank")
     @NonNull
-    @Column(name = "type", nullable = false)
+    @Column(name = "phone_type", nullable = false)
     private String phoneType;
 
     @NotBlank(message = "You must secify whether this is the primary phone number")
-    @Column(name = "primary", nullable = false)
-    private boolean primary;
+    @Column(name = "phone_primary", nullable = false)
+    private boolean phonePrimary;
 
 }
