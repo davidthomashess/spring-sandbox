@@ -4,11 +4,13 @@
   "name": "Java",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
   "image": "mcr.microsoft.com/devcontainers/java:1-21-bullseye",
-
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"
+  ],
   "features": {
     "ghcr.io/devcontainers/features/java:1": {
       "version": "none",
-      "installMaven": "false",
+      "installMaven": "true",
       "installGradle": "false"
     }
   },

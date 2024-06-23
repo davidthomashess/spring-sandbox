@@ -40,9 +40,10 @@ public class CompanyApplication implements CommandLineRunner {
         Project[] project = new Project[] {
                 new Project("Chess App", "Make an app that can play chess", LocalDate.of(2018, Month.FEBRUARY, 27),
                         LocalDate.of(2019, Month.MARCH, 17)),
-                new Project("Chess App", "Make an app that can play chess", LocalDate.of(2022, Month.JULY, 9),
+                new Project("Tip Calculator", "Make an app that can calculate tips", LocalDate.of(2022, Month.JULY, 9),
                         LocalDate.of(2022, Month.DECEMBER, 10)),
-                new Project("Chess App", "Make an app that can play chess", LocalDate.of(2024, Month.APRIL, 22),
+                new Project("Chat Bot", "Make an app that can speak and hold a conversation",
+                        LocalDate.of(2024, Month.APRIL, 22),
                         LocalDate.of(2025, Month.FEBRUARY, 2))
         };
 
