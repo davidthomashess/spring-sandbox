@@ -63,7 +63,7 @@ I've provided a list of all the following endpoints for the respective entities:
   - GET all: "/employee/all"
   - GET one: "/employee/{id}"
   - POST record: "/employee"
-    - example body:
+    - Example body:
       ```json
       {
         "first-name": "John",
@@ -75,42 +75,42 @@ I've provided a list of all the following endpoints for the respective entities:
       }
       ```
   - PUT first name: "/employee/{id}/first-name"
-    - example body:
+    - Example body:
       ```json
       {
         "first-name": "Foo"
       }
       ```
   - PUT last name: "/employee/{id}/last-name"
-    - example body:
+    - Example body:
       ```json
       {
         "last-name": "Bar"
       }
       ```
   - PUT address: "/employee/{id}/address"
-    - example body:
+    - Example body:
       ```json
       {
         "address": "321 Unknown St."
       }
       ```
   - PUT city: "/employee/{id}/city"
-    - example body:
+    - Example body:
       ```json
       {
         "city": "Nothing City"
       }
       ```
   - PUT state: "/employee/{id}/state"
-    - example body:
+    - Example body:
       ```json
       {
         "state": "Ohio"
       }
       ```
   - PUT email: "/employee/{id}/email"
-    - example body:
+    - Example body:
       ```json
       {
         "email": "jdoe@example.com"
@@ -121,7 +121,7 @@ I've provided a list of all the following endpoints for the respective entities:
   - GET all: "/hourly-employee/all"
   - GET one: "/hourly-employee/{id}"
   - POST record: "/hourly-employee/{id}"
-    - example body:
+    - Example body:
       ```json
       {
         "hourly-rate": "23.45",
@@ -129,14 +129,14 @@ I've provided a list of all the following endpoints for the respective entities:
       }
       ```
   - PUT hourly rate: "/hourly-employee/{id}/hourly-rate"
-    - example body:
+    - Example body:
       ```json
       {
         "hourly-rate": "32.20"
       }
       ```
   - PUT full time: "/hourly-employee/{id}/full-time"
-    - example body:
+    - Example body:
       ```json
       {
         "full-time": false
@@ -148,7 +148,7 @@ I've provided a list of all the following endpoints for the respective entities:
   - GET numbers by employee: "/phone-number/employee/{employeeId}"
   - GET one: "/phone-number/{phoneId}"
   - POST record: "/phone-number/{employeeId}"
-    - example body:
+    - Example body:
       ```json
       {
         "phone": "(###) ###-####",
@@ -156,22 +156,27 @@ I've provided a list of all the following endpoints for the respective entities:
         "phone-primary": true
       }
       ```
+      - Restrictions
+        - Phone type accepted values:
+          - "mobile"
+          - "home"
+          - "work"
   - PUT phone number: "/phone-number/{phoneId}/phone"
-    - example body:
+    - Example body:
       ```json
       {
         "phone": "(###) ###-####"
       }
       ```
   - PUT phone type: "/phone-number/{phoneId}/type"
-    - example body:
+    - Example body:
       ```json
       {
         "type": "work"
       }
       ```
   - PUT phone primary: "/phone-number/{phoneId}/phone-primary"
-    - example body:
+    - Example body:
       ```json
       {
         "phone-primary": false
@@ -182,7 +187,7 @@ I've provided a list of all the following endpoints for the respective entities:
   - GET all: "/project/all"
   - GET one: "/project/{id}"
   - POST record: "/project"
-    - example body:
+    - Example body:
       ```json
       {
         "name": "Chess App",
@@ -191,21 +196,21 @@ I've provided a list of all the following endpoints for the respective entities:
       }
       ```
   - PUT name: "/project/{id}/name"
-    - example body:
+    - Example body:
       ```json
       {
         "name": "Checkers App"
       }
       ```
   - PUT start date: "/project/{id}/start-date"
-    - example body:
+    - Example body:
       ```json
       {
         "start-date": "2024-05-09"
       }
       ```
   - PUT end date: "/project/{id}/end-date"
-    - example body:
+    - Example body:
       ```json
       {
         "end-date": "2025-02-17"
@@ -215,7 +220,7 @@ I've provided a list of all the following endpoints for the respective entities:
   - GET all: "/salary-employee/all"
   - GET one: "/salary-employee/{id}"
   - POST record: "/salary-employee/{id}"
-    - example body:
+    - Example body:
       ```json
       {
         "salary-rate": "76040.05",
@@ -223,14 +228,14 @@ I've provided a list of all the following endpoints for the respective entities:
       }
       ```
   - PUT salary rate: "/salary-employee/{id}/salary-rate"
-    - example body:
+    - Example body:
       ```json
       {
         "hourly-rate": "88423.32"
       }
       ```
   - PUT full time: "/salary-employee/{id}/full-time"
-    - example body:
+    - Example body:
       ```json
       {
         "full-time": true
@@ -248,6 +253,6 @@ I've provided a list of all the following endpoints for the respective entities:
 
 Entity classes are where you setup the tables for a database. This includes all the relationships and cardinality of those relationships. Annotations are used to name the fields, setup the relationships and add cardinality, as well as to set primary and foreign keys.
 
-I then added the repositories and services to provide the functionality necessary to handle requests. I built the endpoint functions in my service implementations and made sure to include field validation and exception handling. The service functions are able to handle request bodys and are loaded with the neccessary parameters. I then used controllers to call on the functions in my service implementations to handle the request URLs and request bodys and then respond with the appropriate response entities.
+I then added the repositories and services to provide the functionality necessary to handle requests. I built the endpoint functions in my service implementations and made sure to include field validation and exception handling. The service functions are able to handle request bodys and are loaded with the neccessary parameters. I then used controllers to call on the functions in my service implementations to handle the request URLs and request bodies and then respond with the appropriate response entities.
 
 The application is prepopulated with some example records for the employee and project entities respectfully. This can allow for immediate experimentation of inserting records, updating values, viewing records, or deleting them. Such functionality can be tested with Postman or Cypress.
