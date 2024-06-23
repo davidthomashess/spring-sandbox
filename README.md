@@ -244,8 +244,6 @@ I've provided a list of all the following endpoints for the respective entities:
     alt="Markdown Monster icon"
     style="float: left; margin-right: 10px;" />
 
-<p style="opacity: 0;">.</p>
-
 ## What I learned
 
 Entity classes are where you setup the tables for a database. This includes all the relationships and cardinality of those relationships. Annotations are used to name the fields, setup the relationships and add cardinality, as well as to set primary and foreign keys.
