@@ -2,7 +2,7 @@
 
 ## About the Project
 
-A learning effort to teach myself how to build a Spring Boot API from an Entity Relationship Diagram.
+A Spring Boot API built from an Entity Relationship Diagram.
 
 ## Getting Started
 
