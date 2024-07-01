@@ -66,8 +66,8 @@ I've provided a list of all the following endpoints for the respective entities:
     - Example body:
       ```json
       {
-        "first-name": "John",
-        "last-name": "Doe",
+        "firstName": "John",
+        "lastName": "Doe",
         "address": "123 Fake St.",
         "city": "Fake City",
         "state": "Navada",
@@ -78,14 +78,14 @@ I've provided a list of all the following endpoints for the respective entities:
     - Example body:
       ```json
       {
-        "first-name": "Foo"
+        "firstName": "Foo"
       }
       ```
   - PUT last name: "/employee/{id}/last-name"
     - Example body:
       ```json
       {
-        "last-name": "Bar"
+        "lastName": "Bar"
       }
       ```
   - PUT address: "/employee/{id}/address"
@@ -124,22 +124,22 @@ I've provided a list of all the following endpoints for the respective entities:
     - Example body:
       ```json
       {
-        "hourly-rate": "23.45",
-        "full-time": true
+        "hourlyRate": "23.45",
+        "fullTime": true
       }
       ```
   - PUT hourly rate: "/hourly-employee/{id}/hourly-rate"
     - Example body:
       ```json
       {
-        "hourly-rate": "32.20"
+        "hourlyRate": "32.20"
       }
       ```
   - PUT full time: "/hourly-employee/{id}/full-time"
     - Example body:
       ```json
       {
-        "full-time": false
+        "fullTime": false
       }
       ```
   - DELETE record: "/hourly-employee/{id}"
@@ -153,7 +153,7 @@ I've provided a list of all the following endpoints for the respective entities:
       {
         "phone": "(###) ###-####",
         "type": "mobile",
-        "phone-primary": true
+        "phonePrimary": true
       }
       ```
       - Restrictions
@@ -179,7 +179,7 @@ I've provided a list of all the following endpoints for the respective entities:
     - Example body:
       ```json
       {
-        "phone-primary": false
+        "phonePrimary": false
       }
       ```
   - DELETE phone number: "/phone-number/{phoneId}"
@@ -191,8 +191,8 @@ I've provided a list of all the following endpoints for the respective entities:
       ```json
       {
         "name": "Chess App",
-        "start-date": "2024-04-23",
-        "end-date": "2025-01-12"
+        "startDate": "2024-04-23",
+        "endDate": "2025-01-12"
       }
       ```
   - PUT name: "/project/{id}/name"
@@ -206,14 +206,14 @@ I've provided a list of all the following endpoints for the respective entities:
     - Example body:
       ```json
       {
-        "start-date": "2024-05-09"
+        "startDate": "2024-05-09"
       }
       ```
   - PUT end date: "/project/{id}/end-date"
     - Example body:
       ```json
       {
-        "end-date": "2025-02-17"
+        "endDate": "2025-02-17"
       }
       ```
 - Salary Employee
@@ -223,22 +223,22 @@ I've provided a list of all the following endpoints for the respective entities:
     - Example body:
       ```json
       {
-        "salary-rate": "76040.05",
-        "full-time": true
+        "salaryRate": "76040.05",
+        "fullTime": true
       }
       ```
   - PUT salary rate: "/salary-employee/{id}/salary-rate"
     - Example body:
       ```json
       {
-        "hourly-rate": "88423.32"
+        "hourlyRate": "88423.32"
       }
       ```
   - PUT full time: "/salary-employee/{id}/full-time"
     - Example body:
       ```json
       {
-        "full-time": true
+        "fullTime": true
       }
       ```
   - DELETE record: "/salary-employee/{id}"
