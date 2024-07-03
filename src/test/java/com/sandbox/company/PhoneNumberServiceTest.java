@@ -52,6 +52,15 @@ public class PhoneNumberServiceTest {
     }
 
     @Test
+    public void getPhoneNumberTest() {
+        when(phoneNumberRepository.findById(1L)).thenReturn(Optional.of(phoneNumbers[0]));
+
+        PhoneNumber phoneNumber = phoneNumberServiceImpl.getPhoneNumber(1L);
+
+        assertEquals(phoneNumbers[0], phoneNumber);
+    }
+
+    @Test
     public void savePhoneNumberTest() {
         when(phoneNumberRepository.save(phoneNumbers[0])).thenReturn(phoneNumbers[0]);
         when(employeeRepository.findById(1L)).thenReturn(Optional.of(employees[0]));
