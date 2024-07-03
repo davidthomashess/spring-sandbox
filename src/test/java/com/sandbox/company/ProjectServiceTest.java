@@ -7,6 +7,7 @@ import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -30,7 +31,7 @@ public class ProjectServiceTest {
     @InjectMocks
     private ProjectServiceImpl projectServiceImpl;
 
-    Project[] projects = new Project[] {
+    private Project[] projects = {
             new Project("Chess App", "Make an app that can play chess", LocalDate.of(2018, Month.FEBRUARY, 27),
                     LocalDate.of(2019, Month.MARCH, 17)),
             new Project("Tip Calculator", "Make an app that can calculate tips", LocalDate.of(2022, Month.JULY, 9),
@@ -92,7 +93,7 @@ public class ProjectServiceTest {
 
     @Test
     public void updateProjectStartDateTest() {
-        LocalDate startDate = LocalDate.of(2018, Month.MARCH, 17);
+        LocalDate startDate = LocalDate.parse("2018-03-17", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
         when(projectRepository.findById(1L)).thenReturn(Optional.of(projects[0]));
         when(projectRepository.save(projects[0])).thenReturn(projects[0]);
