@@ -34,6 +34,7 @@ public class PhoneNumber implements Serializable {
     private Employee employee;
 
     @Size(max = 20, message = "Too many numbers in your phone number")
+    @NotBlank(message = "Phone type cannot be blank")
     @Column(name = "phone")
     private String phone;
 
