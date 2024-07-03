@@ -30,7 +30,7 @@ public class SalaryEmployeeServiceImpl implements SalaryEmployeeService {
 
     @Override
     public SalaryEmployee getSalaryEmployee(Long id) {
-        return salaryEmployeeRepository.findById(id).get();
+        return salaryEmployeeRepository.findByEmployeeId(id).get();
     }
 
     @Override
