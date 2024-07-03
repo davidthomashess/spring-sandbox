@@ -19,7 +19,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.sandbox.company.entity.Employee;
 import com.sandbox.company.entity.HourlyEmployee;
-import com.sandbox.company.entity.PhoneNumber;
 import com.sandbox.company.repository.EmployeeRepository;
 import com.sandbox.company.repository.HourlyEmployeeRepository;
 import com.sandbox.company.service.EmployeeServiceImpl;
