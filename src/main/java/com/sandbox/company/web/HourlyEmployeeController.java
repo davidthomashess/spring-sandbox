@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sandbox.company.entity.HourlyEmployee;
 import com.sandbox.company.service.HourlyEmployeeService;
+import com.sandbox.company.update.HourlyEmployeeFullTime;
+import com.sandbox.company.update.HourlyEmployeeHourlyRate;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -44,17 +46,17 @@ public class HourlyEmployeeController {
 
     @PutMapping("/{id}/hourly-rate")
     public ResponseEntity<HourlyEmployee> updateHourlyEmployeeHourlyRate(
-            @Valid @RequestBody HourlyEmployee hourlyEmployee, @PathVariable Long id) {
+            @Valid @RequestBody HourlyEmployeeHourlyRate hourlyEmployeeHourlyRate, @PathVariable Long id) {
         return new ResponseEntity<>(
-                hourlyEmployeeService.updateHourlyEmployeeHourlyRate(hourlyEmployee.getHourlyRate(), id),
+                hourlyEmployeeService.updateHourlyEmployeeHourlyRate(hourlyEmployeeHourlyRate.getHourlyRate(), id),
                 HttpStatus.OK);
     }
 
     @PutMapping("/{id}/full-time")
     public ResponseEntity<HourlyEmployee> updateHourlyEmployeeFullTime(
-            @Valid @RequestBody HourlyEmployee hourlyEmployee, @PathVariable Long id) {
+            @Valid @RequestBody HourlyEmployeeFullTime hourlyEmployeeFullTime, @PathVariable Long id) {
         return new ResponseEntity<>(
-                hourlyEmployeeService.updateHourlyEmployeeFullTime(hourlyEmployee.isFullTime(), id),
+                hourlyEmployeeService.updateHourlyEmployeeFullTime(hourlyEmployeeFullTime.isFullTime(), id),
                 HttpStatus.OK);
     }
 

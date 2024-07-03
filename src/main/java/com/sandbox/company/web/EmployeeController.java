@@ -15,6 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sandbox.company.entity.Employee;
 import com.sandbox.company.service.EmployeeService;
+import com.sandbox.company.update.EmployeeAddress;
+import com.sandbox.company.update.EmployeeCity;
+import com.sandbox.company.update.EmployeeEmail;
+import com.sandbox.company.update.EmployeeFirstName;
+import com.sandbox.company.update.EmployeeLastName;
+import com.sandbox.company.update.EmployeeState;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -42,44 +48,44 @@ public class EmployeeController {
     }
 
     @PutMapping("/{id}/first-name")
-    public ResponseEntity<Employee> updateEmployeeFirstName(@Valid @RequestBody Employee employee,
+    public ResponseEntity<Employee> updateEmployeeFirstName(@Valid @RequestBody EmployeeFirstName employeeFirstName,
             @PathVariable Long id) {
-        return new ResponseEntity<>(employeeService.updateEmployeeFirstName(employee.getFirstName(), id),
+        return new ResponseEntity<>(employeeService.updateEmployeeFirstName(employeeFirstName.getFirstName(), id),
                 HttpStatus.OK);
     }
 
     @PutMapping("/{id}/last-name")
-    public ResponseEntity<Employee> updateEmployeeLastName(@Valid @RequestBody Employee employee,
+    public ResponseEntity<Employee> updateEmployeeLastName(@Valid @RequestBody EmployeeLastName employeeLastName,
             @PathVariable Long id) {
-        return new ResponseEntity<>(employeeService.updateEmployeeLastName(employee.getLastName(), id),
+        return new ResponseEntity<>(employeeService.updateEmployeeLastName(employeeLastName.getLastName(), id),
                 HttpStatus.OK);
     }
 
     @PutMapping("/{id}/address")
-    public ResponseEntity<Employee> updateEmployeeAddress(@Valid @RequestBody Employee employee,
+    public ResponseEntity<Employee> updateEmployeeAddress(@Valid @RequestBody EmployeeAddress employeeAddress,
             @PathVariable Long id) {
-        return new ResponseEntity<>(employeeService.updateEmployeeAddress(employee.getAddress(), id),
+        return new ResponseEntity<>(employeeService.updateEmployeeAddress(employeeAddress.getAddress(), id),
                 HttpStatus.OK);
     }
 
     @PutMapping("/{id}/city")
-    public ResponseEntity<Employee> updateEmployeeCity(@Valid @RequestBody Employee employee,
+    public ResponseEntity<Employee> updateEmployeeCity(@Valid @RequestBody EmployeeCity employeeCity,
             @PathVariable Long id) {
-        return new ResponseEntity<>(employeeService.updateEmployeeCity(employee.getCity(), id),
+        return new ResponseEntity<>(employeeService.updateEmployeeCity(employeeCity.getCity(), id),
                 HttpStatus.OK);
     }
 
     @PutMapping("/{id}/state")
-    public ResponseEntity<Employee> updateEmployeeState(@Valid @RequestBody Employee employee,
+    public ResponseEntity<Employee> updateEmployeeState(@Valid @RequestBody EmployeeState employeeState,
             @PathVariable Long id) {
-        return new ResponseEntity<>(employeeService.updateEmployeeState(employee.getState(), id),
+        return new ResponseEntity<>(employeeService.updateEmployeeState(employeeState.getState(), id),
                 HttpStatus.OK);
     }
 
     @PutMapping("/{id}/email")
-    public ResponseEntity<Employee> updateEmployeeEmail(@Valid @RequestBody Employee employee,
+    public ResponseEntity<Employee> updateEmployeeEmail(@Valid @RequestBody EmployeeEmail employeeEmail,
             @PathVariable Long id) {
-        return new ResponseEntity<>(employeeService.updateEmployeeEmail(employee.getEmail(), id),
+        return new ResponseEntity<>(employeeService.updateEmployeeEmail(employeeEmail.getEmail(), id),
                 HttpStatus.OK);
     }
 

@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sandbox.company.entity.SalaryEmployee;
 import com.sandbox.company.service.SalaryEmployeeService;
+import com.sandbox.company.update.SalaryEmployeeFullTime;
+import com.sandbox.company.update.SalaryEmployeeSalaryRate;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -44,17 +46,17 @@ public class SalaryEmployeeController {
 
     @PutMapping("/{id}/salary-rate")
     public ResponseEntity<SalaryEmployee> updateSalaryEmployeeSalaryRate(
-            @Valid @RequestBody SalaryEmployee salaryEmployee, @PathVariable Long id) {
+            @Valid @RequestBody SalaryEmployeeSalaryRate salaryEmployeeSalaryRate, @PathVariable Long id) {
         return new ResponseEntity<>(
-                salaryEmployeeService.updateSalaryEmployeeSalaryRate(salaryEmployee.getSalaryRate(), id),
+                salaryEmployeeService.updateSalaryEmployeeSalaryRate(salaryEmployeeSalaryRate.getSalaryRate(), id),
                 HttpStatus.OK);
     }
 
     @PutMapping("/{id}/full-time")
     public ResponseEntity<SalaryEmployee> updateSalaryEmployeeFullTime(
-            @Valid @RequestBody SalaryEmployee salaryEmployee, @PathVariable Long id) {
+            @Valid @RequestBody SalaryEmployeeFullTime salaryEmployeeFullTime, @PathVariable Long id) {
         return new ResponseEntity<>(
-                salaryEmployeeService.updateSalaryEmployeeFullTime(salaryEmployee.isFullTime(), id),
+                salaryEmployeeService.updateSalaryEmployeeFullTime(salaryEmployeeFullTime.isFullTime(), id),
                 HttpStatus.OK);
     }
 

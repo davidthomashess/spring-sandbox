@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sandbox.company.entity.Assignment;
 import com.sandbox.company.service.AssignmentService;
+import com.sandbox.company.update.AssignmentAssignmentDate;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -36,9 +37,11 @@ public class AssignmentController {
     }
 
     @PostMapping("/employee/{employeeId}/project/{projectId}")
-    public ResponseEntity<Assignment> saveAssignment(@Valid @RequestBody Assignment assignment,
+    public ResponseEntity<Assignment> saveAssignment(
+            @Valid @RequestBody AssignmentAssignmentDate assignmentAssignmentDate,
             @PathVariable Long employeeId, @PathVariable Long projectId) {
-        return new ResponseEntity<>(assignmentService.saveAssignment(assignment, employeeId, projectId),
+        return new ResponseEntity<>(
+                assignmentService.saveAssignment(assignmentAssignmentDate.getAssignmentDate(), employeeId, projectId),
                 HttpStatus.CREATED);
     }
 

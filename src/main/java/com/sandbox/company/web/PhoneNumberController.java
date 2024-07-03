@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sandbox.company.entity.PhoneNumber;
 import com.sandbox.company.service.PhoneNumberService;
+import com.sandbox.company.update.PhoneNumberPhone;
+import com.sandbox.company.update.PhoneNumberPhonePrimary;
+import com.sandbox.company.update.PhoneNumberPhoneType;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -48,28 +51,30 @@ public class PhoneNumberController {
     }
 
     @PutMapping("/{phoneId}/phone")
-    public ResponseEntity<PhoneNumber> updatePhoneNumberPhone(@Valid @RequestBody PhoneNumber phoneNumber,
+    public ResponseEntity<PhoneNumber> updatePhoneNumberPhone(@Valid @RequestBody PhoneNumberPhone phoneNumberPhone,
             @PathVariable Long phoneId) {
         return new ResponseEntity<>(
-                phoneNumberService.updatePhoneNumberPhone(phoneNumber.getPhone(), phoneId),
+                phoneNumberService.updatePhoneNumberPhone(phoneNumberPhone.getPhone(), phoneId),
                 HttpStatus.OK);
     }
 
     @PutMapping("/{phoneId}/phone-type")
-    public ResponseEntity<PhoneNumber> updatePhoneNumberPhoneType(@Valid @RequestBody PhoneNumber phoneNumber,
+    public ResponseEntity<PhoneNumber> updatePhoneNumberPhoneType(
+            @Valid @RequestBody PhoneNumberPhoneType phoneNumberPhoneType,
             @PathVariable Long phoneId) {
         return new ResponseEntity<>(
-                phoneNumberService.updatePhoneNumberPhoneType(phoneNumber.getPhoneType(), phoneId,
-                        phoneNumber.getPhone()),
+                phoneNumberService.updatePhoneNumberPhoneType(phoneNumberPhoneType.getPhoneType(), phoneId,
+                        phoneNumberPhoneType.getPhone()),
                 HttpStatus.OK);
     }
 
     @PutMapping("/{phoneId}/phone-primary")
-    public ResponseEntity<PhoneNumber> updatePhoneNumberPhonePrimary(@Valid @RequestBody PhoneNumber phoneNumber,
+    public ResponseEntity<PhoneNumber> updatePhoneNumberPhonePrimary(
+            @Valid @RequestBody PhoneNumberPhonePrimary phoneNumberPrimary,
             @PathVariable Long phoneId) {
         return new ResponseEntity<>(
-                phoneNumberService.updatePhoneNumberPhonePrimary(phoneNumber.isPhonePrimary(), phoneId,
-                        phoneNumber.getPhone()),
+                phoneNumberService.updatePhoneNumberPhonePrimary(phoneNumberPrimary.isPhonePrimary(), phoneId,
+                        phoneNumberPrimary.getPhone()),
                 HttpStatus.OK);
     }
 
