@@ -2,6 +2,8 @@ package com.sandbox.company.entity;
 
 import java.time.LocalDate;
 
+import com.sandbox.company.update.AssignmentAssignmentDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
