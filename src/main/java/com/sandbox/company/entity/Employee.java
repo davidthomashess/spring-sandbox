@@ -51,7 +51,7 @@ public class Employee {
     @Column(name = "city", nullable = false)
     private String city;
 
-    @NotBlank(message = "state cannot be blank")
+    @NotBlank(message = "State cannot be blank")
     @NonNull
     @Column(name = "state", nullable = false)
     private String state;

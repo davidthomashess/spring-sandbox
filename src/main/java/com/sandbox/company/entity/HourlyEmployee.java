@@ -37,4 +37,10 @@ public class HourlyEmployee {
     @Column(name = "full_time", nullable = false)
     private boolean fullTime;
 
+    public HourlyEmployee(Employee employee, BigDecimal hourlyRate, boolean fullTime) {
+        this.employee = employee;
+        this.hourlyRate = hourlyRate;
+        this.fullTime = fullTime;
+    }
+
 }

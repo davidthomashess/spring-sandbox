@@ -1,5 +1,6 @@
 package com.sandbox.company.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,12 +36,15 @@ public class AssignmentServiceImpl implements AssignmentService {
     }
 
     @Override
-    public Assignment saveAssignment(Assignment assignment, Long employeeId, Long projectId) {
+    public Assignment saveAssignment(LocalDate assignmentDate, Long employeeId,
+            Long projectId) {
         Employee employee = EmployeeServiceImpl.unwrapEmployee(employeeRepository.findById(employeeId), employeeId);
         Project project = ProjectServiceImpl.unwrapProject(projectRepository.findById(projectId), projectId);
+        Assignment assignment = new Assignment();
 
         assignment.setEmployee(employee);
         assignment.setProject(project);
+        assignment.setAssignmentDate(assignmentDate);
 
         return assignmentRepository.save(assignment);
     }

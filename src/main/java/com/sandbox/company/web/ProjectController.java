@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sandbox.company.entity.Project;
 import com.sandbox.company.service.ProjectService;
+import com.sandbox.company.update.ProjectEndDate;
+import com.sandbox.company.update.ProjectName;
+import com.sandbox.company.update.ProjectStartDate;
 
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -41,18 +44,23 @@ public class ProjectController {
     }
 
     @PutMapping("/{id}/name")
-    public ResponseEntity<Project> updateProjectName(@Valid @RequestBody Project project, @PathVariable Long id) {
-        return new ResponseEntity<>(projectService.updateProjectName(project.getName(), id), HttpStatus.OK);
+    public ResponseEntity<Project> updateProjectName(@Valid @RequestBody ProjectName projectName,
+            @PathVariable Long id) {
+        return new ResponseEntity<>(projectService.updateProjectName(projectName.getName(), id), HttpStatus.OK);
     }
 
     @PutMapping("/{id}/start-date")
-    public ResponseEntity<Project> updateProjectStartDate(@Valid @RequestBody Project project, @PathVariable Long id) {
-        return new ResponseEntity<>(projectService.updateProjectStartDate(project.getStartDate(), id), HttpStatus.OK);
+    public ResponseEntity<Project> updateProjectStartDate(@Valid @RequestBody ProjectStartDate projectStartDate,
+            @PathVariable Long id) {
+        return new ResponseEntity<>(projectService.updateProjectStartDate(projectStartDate.getStartDate(), id),
+                HttpStatus.OK);
     }
 
     @PutMapping("/{id}/end-date")
-    public ResponseEntity<Project> updateProjectEndDate(@Valid @RequestBody Project project, @PathVariable Long id) {
-        return new ResponseEntity<>(projectService.updateProjectEndDate(project.getEndDate(), id), HttpStatus.OK);
+    public ResponseEntity<Project> updateProjectEndDate(@Valid @RequestBody ProjectEndDate projectEndDate,
+            @PathVariable Long id) {
+        return new ResponseEntity<>(projectService.updateProjectEndDate(projectEndDate.getEndDate(), id),
+                HttpStatus.OK);
     }
 
 }

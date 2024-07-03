@@ -29,12 +29,18 @@ public class SalaryEmployee {
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
-    @NotBlank(message = "Hourly rate cannot be blank")
+    @NotBlank(message = "Salary rate cannot be blank")
     @Column(name = "salary_rate", nullable = false, precision = 15, scale = 2)
     private BigDecimal salaryRate;
 
     @NotBlank(message = "Must specify whether this is a full time employee")
     @Column(name = "full_time", nullable = false)
     private boolean fullTime;
+
+    public SalaryEmployee(Employee employee, BigDecimal salaryRate, boolean fullTime) {
+        this.employee = employee;
+        this.salaryRate = salaryRate;
+        this.fullTime = fullTime;
+    }
 
 }
