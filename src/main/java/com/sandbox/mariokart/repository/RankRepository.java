@@ -6,10 +6,11 @@ import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 
 import com.sandbox.mariokart.entity.Rank;
+import com.sandbox.mariokart.entity.RankPK;
 
 import jakarta.transaction.Transactional;
 
-public interface RankRepository extends CrudRepository<Rank, Long> {
+public interface RankRepository extends CrudRepository<Rank, RankPK> {
 
     Optional<Rank> findByPlayerIdAndTrackId(Long playerId, Long trackId);
 
